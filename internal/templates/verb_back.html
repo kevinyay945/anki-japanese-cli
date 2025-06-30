@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .card {
+            font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .card-back {
+            text-align: center;
+        }
+
+        .context-sentence {
+            font-size: 1.4em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .core-word {
+            font-size: 2em;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .word-info {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .pronunciation, .accent, .word-type {
+            background: #3498db;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .translation {
+            font-size: 1.2em;
+            color: #27ae60;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .conjugations {
+            background: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            color: #34495e;
+            white-space: pre-line;
+        }
+
+        .image img {
+            max-width: 200px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-back">
+            <div class="context-sentence">{{.情境例句}}</div>
+            <div class="core-word">{{.核心單字}}</div>
+            <div class="word-info">
+                <div class="pronunciation">{{.發音}}</div>
+                <div class="accent">{{.重音}}</div>
+                <div class="word-type">{{.詞性分類}}</div>
+            </div>
+            <div class="translation">{{.例句翻譯}}</div>
+            <div class="conjugations">{{.常用變化}}</div>
+            {{if .圖片提示}}
+            <div class="image">
+                <img src="{{.圖片提示}}" alt="動詞圖片">
+            </div>
+            {{end}}
+        </div>
+    </div>
+</body>
+</html>

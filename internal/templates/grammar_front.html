@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .card {
+            font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            color: white;
+        }
+
+        .card-front {
+            text-align: center;
+        }
+
+        .grammar-challenge {
+            font-size: 1.4em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #f8f9fa;
+            font-weight: 500;
+        }
+
+        .grammar-point-hint {
+            font-size: 1.1em;
+            color: #ffd700;
+            margin-bottom: 10px;
+            font-style: italic;
+            background: rgba(255,255,255,0.1);
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-front">
+            <div class="grammar-challenge">{{.情境課題}}</div>
+            <div class="grammar-point-hint">使用「{{.文法要點}}」</div>
+        </div>
+    </div>
+</body>
+</html>

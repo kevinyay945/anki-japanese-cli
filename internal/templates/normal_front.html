@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .card {
+            font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            color: white;
+        }
+
+        .card-front {
+            text-align: center;
+        }
+
+        .context-sentence {
+            font-size: 1.4em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #f8f9fa;
+            font-weight: 500;
+        }
+
+        .meaning-hint {
+            font-size: 1em;
+            color: #e9ecef;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .image-hint img {
+            max-width: 200px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            margin-top: 15px;
+        }
+
+        .image-hint {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-front">
+            <div class="context-sentence">{{.情境例句}}</div>
+            <div class="meaning-hint">{{.核心意義}}</div>
+            {{if .圖片提示}}
+            <div class="image-hint">
+                <img src="{{.圖片提示}}" alt="圖片提示">
+            </div>
+            {{end}}
+        </div>
+    </div>
+</body>
+</html>

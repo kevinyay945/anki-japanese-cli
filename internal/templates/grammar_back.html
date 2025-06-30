@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .card {
+            font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            color: white;
+        }
+
+        .card-back {
+            text-align: center;
+        }
+
+        .challenge {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #e9ecef;
+            font-weight: 500;
+        }
+
+        .answer {
+            font-size: 1.3em;
+            color: #4caf50;
+            margin-bottom: 20px;
+            font-weight: 600;
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .grammar-info {
+            text-align: left;
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .grammar-point {
+            font-size: 1.5em;
+            color: #ffd700;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .meaning, .connection-rules, .usage-notes {
+            margin: 8px 0;
+            font-size: 0.95em;
+            line-height: 1.4;
+            color: #f8f9fa;
+        }
+
+        .meaning {
+            font-size: 1.1em;
+            color: #b3e5fc;
+            margin-bottom: 12px;
+        }
+
+        .confusing-grammar {
+            background: rgba(244, 67, 54, 0.3);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #ffcdd2;
+        }
+
+        .section-title {
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-back">
+            <div class="challenge">{{.情境課題}}</div>
+            <div class="answer">{{.解答範例}}</div>
+            <div class="grammar-info">
+                <div class="grammar-point">{{.文法要點}}</div>
+                <div class="meaning">{{.意義說明}}</div>
+                {{if .結構形式}}
+                <div class="connection-rules">
+                    <div class="section-title">結構形式:</div>
+                    {{.結構形式}}
+                </div>
+                {{end}}
+                {{if .使用時機}}
+                <div class="usage-notes">
+                    <div class="section-title">使用時機:</div>
+                    {{.使用時機}}
+                </div>
+                {{end}}
+            </div>
+            {{if .常見錯誤}}
+            <div class="confusing-grammar">
+                <div class="section-title">常見錯誤:</div>
+                {{.常見錯誤}}
+            </div>
+            {{end}}
+        </div>
+    </div>
+</body>
+</html>
