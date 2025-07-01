@@ -156,3 +156,13 @@ func (tm *TemplateManager) ReloadTemplates() error {
 	tm.templates = make(map[string]*CardTemplate)
 	return tm.loadTemplates()
 }
+
+// GetRawTemplate 獲取原始模板內容
+func (tm *TemplateManager) GetRawTemplate(cardType string, side string) (string, error) {
+	filename := fmt.Sprintf("%s_%s.html", cardType, side)
+	content, err := templateFS.ReadFile(filename)
+	if err != nil {
+		return "", fmt.Errorf("讀取模板檔案 %s 失敗: %w", filename, err)
+	}
+	return string(content), nil
+}

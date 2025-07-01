@@ -3,6 +3,7 @@ package models
 import (
 	"encoding/json"
 	"fmt"
+	"strings"
 )
 
 // CardFactory 卡片工廠
@@ -117,5 +118,5 @@ func (cf *CardFactory) ValidateCardType(cardType string) error {
 			return nil
 		}
 	}
-	return fmt.Errorf("不支援的卡片類型: %s。支援的類型: %v", cardType, supportedTypes)
+	return fmt.Errorf("不支援的卡片類型: %s。支援的類型: %s", cardType, strings.Join(supportedTypes, ", "))
 }
