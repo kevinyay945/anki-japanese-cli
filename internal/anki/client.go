@@ -10,6 +10,11 @@ import (
 	"anki-japanese-cli/internal/config"
 )
 
+// HTTPClient interface for the HTTP client
+type HTTPClient interface {
+	Do(req *http.Request) (*http.Response, error)
+}
+
 const (
 	// DefaultTimeout is the default timeout for HTTP requests
 	DefaultTimeout = 30 * time.Second
@@ -24,7 +29,7 @@ const (
 // Client represents an Anki Connect API client
 type Client struct {
 	config     *config.AnkiConfig
-	httpClient *http.Client
+	httpClient HTTPClient
 	retries    int
 	retryDelay time.Duration
 }
@@ -49,6 +54,16 @@ func NewClient(cfg *config.AnkiConfig) *Client {
 		httpClient: &http.Client{
 			Timeout: DefaultTimeout,
 		},
+		retries:    DefaultRetries,
+		retryDelay: DefaultRetryDelay,
+	}
+}
+
+// NewClientWithHTTPClient creates a new Anki Connect client with a custom HTTP client
+func NewClientWithHTTPClient(cfg *config.AnkiConfig, httpClient HTTPClient) *Client {
+	return &Client{
+		config:     cfg,
+		httpClient: httpClient,
 		retries:    DefaultRetries,
 		retryDelay: DefaultRetryDelay,
 	}
