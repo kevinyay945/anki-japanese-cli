@@ -1,13 +1,14 @@
 package cmd
 
 import (
+	"encoding/json"
+	"fmt"
+	"os"
+	"strings"
+
 	"anki-japanese-cli/internal/anki"
 	"anki-japanese-cli/internal/config"
 	"anki-japanese-cli/internal/models"
-	"encoding/json"
-	"fmt"
-	"io/ioutil"
-	"strings"
 
 	"github.com/spf13/cobra"
 )
@@ -114,7 +115,7 @@ var addCmd = &cobra.Command{
 		// 從檔案讀取
 		if filePath != "" {
 			fmt.Printf("從檔案 '%s' 讀取卡片資料...\n", filePath)
-			fileContent, err := ioutil.ReadFile(filePath)
+			fileContent, err := os.ReadFile(filePath)
 			if err != nil {
 				fmt.Printf("錯誤: 無法讀取檔案: %v\n", err)
 				return fmt.Errorf("無法讀取檔案: %w", err)
